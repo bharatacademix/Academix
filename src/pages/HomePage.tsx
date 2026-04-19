@@ -139,7 +139,7 @@ export function HomePage() {
               </div>
               <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
                 <div className="rounded-2xl border border-[var(--border)] bg-white/40 p-3">
-                  <div className="font-semibold">Flags</div>
+                  <div className="font-semibold">Countries</div>
                   <div className="mt-1 text-[var(--subtext)]">
                     🇮🇳 🇺🇸 🇬🇧 🇨🇦 🇦🇺 🇸🇬 🇦🇪
                   </div>

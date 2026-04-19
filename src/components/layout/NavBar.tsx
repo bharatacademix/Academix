@@ -153,9 +153,7 @@ export function NavBar() {
               </div>
             ) : (
               <div className="space-y-3">
-                <div className="text-center text-sm font-medium text-[var(--subtext)]">
-                  Optional Authentication
-                </div>
+
                 <div className="flex gap-2">
                   <NavLink
                     to="/signin"
