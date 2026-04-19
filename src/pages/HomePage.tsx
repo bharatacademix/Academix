@@ -40,10 +40,6 @@ function Marquee({ items }: { items: readonly string[] }) {
 export function HomePage() {
   const prefs = usePreferences()
   const typing = useTypingText('Your Academic Success Partner')
-  const country = useMemo(
-    () => COUNTRIES.find((c) => c.code === prefs.country) ?? COUNTRIES[0],
-    [prefs.country],
-  )
 
   const [contactName, setContactName] = useState('')
   const [contactCountry, setContactCountry] = useState<CountryCode>(prefs.country)

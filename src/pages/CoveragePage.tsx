@@ -1,26 +1,6 @@
 import { Card } from '../components/shared/Card'
 import { PageHeader } from '../components/shared/PageHeader'
 
-function WorldGlobeVideo() {
-  return (
-    <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--muted)]">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" />
-      <div className="relative aspect-[16/9] overflow-hidden rounded-3xl">
-        <video
-          className="h-full w-full object-cover"
-          src="/videos/video1.mp4"
-          title="Global Globe Video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-      </div>
-      
-    </div>
-  )
-}
 
 export function CoveragePage() {
   return (

@@ -8,7 +8,7 @@ interface SocialAuthButtonProps {
   disabled?: boolean
 }
 
-function SocialAuthButton({ provider, onClick, disabled }: SocialAuthButtonProps) {
+function SocialAuthButton({ provider: _provider, onClick, disabled }: SocialAuthButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleClick = async () => {
