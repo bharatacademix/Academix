@@ -1,0 +1,20 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#F4A261"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#g3)"/>
+  <rect x="104" y="92" width="432" height="236" rx="20" fill="#FFFFFF22" stroke="#FFFFFF66"/>
+  <circle cx="168" cy="146" r="24" fill="#FFFFFF99"/>
+  <rect x="206" y="134" width="266" height="12" rx="6" fill="#FFFFFFAA"/>
+  <rect x="206" y="156" width="198" height="10" rx="5" fill="#FFFFFF80"/>
+  <circle cx="168" cy="210" r="24" fill="#FFFFFF99"/>
+  <rect x="206" y="198" width="290" height="12" rx="6" fill="#FFFFFFAA"/>
+  <rect x="206" y="220" width="238" height="10" rx="5" fill="#FFFFFF80"/>
+  <circle cx="168" cy="274" r="24" fill="#FFFFFF99"/>
+  <rect x="206" y="262" width="270" height="12" rx="6" fill="#FFFFFFAA"/>
+  <rect x="206" y="284" width="210" height="10" rx="5" fill="#FFFFFF80"/>
+  <text x="48" y="384" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="700">Reports, Patents & Presentation Help</text>
+</svg>

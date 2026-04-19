@@ -1,0 +1,17 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#g2)"/>
+  <rect x="120" y="78" width="400" height="264" rx="22" fill="#FFFFFF22" stroke="#FFFFFF66"/>
+  <rect x="158" y="118" width="325" height="14" rx="7" fill="#FFFFFFAA"/>
+  <rect x="158" y="150" width="280" height="11" rx="5.5" fill="#FFFFFF80"/>
+  <rect x="158" y="174" width="300" height="11" rx="5.5" fill="#FFFFFF80"/>
+  <rect x="158" y="198" width="250" height="11" rx="5.5" fill="#FFFFFF80"/>
+  <rect x="158" y="222" width="318" height="11" rx="5.5" fill="#FFFFFF80"/>
+  <rect x="158" y="246" width="210" height="11" rx="5.5" fill="#FFFFFF80"/>
+  <text x="48" y="384" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="700">Research, Reviews & Thesis Editing</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg width="720" height="480" viewBox="0 0 720 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="480" rx="24" fill="#F3F9F6"/>
+  <circle cx="352" cy="232" r="124" fill="#00B4D8" fill-opacity="0.14"/>
+  <circle cx="352" cy="168" r="60" fill="#F7C9A4"/>
+  <path d="M252 336C252 280.772 296.772 236 352 236C407.228 236 452 280.772 452 336V398H252V336Z" fill="#1E293B"/>
+  <rect x="303" y="292" width="98" height="20" rx="10" fill="#00B4D8"/>
+  <rect x="464" y="184" width="124" height="88" rx="12" fill="#FFFFFF" stroke="#B5D7E8"/>
+  <rect x="482" y="206" width="86" height="8" rx="4" fill="#7FB3C9"/>
+  <rect x="482" y="222" width="70" height="8" rx="4" fill="#7FB3C9"/>
+  <rect x="482" y="238" width="56" height="8" rx="4" fill="#7FB3C9"/>
+  <text x="36" y="444" fill="#0A192F" font-family="Arial, sans-serif" font-size="32" font-weight="700">Focused Research Student</text>
+</svg>

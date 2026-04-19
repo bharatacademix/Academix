@@ -1,0 +1,9 @@
+# Query: Your Degree. Our Expertise. Worldwide.
+# ContextLines: 1
+
+1 result - 1 file
+
+src/lib/constants.ts:
+  2    name: 'Bharat Academix',
+  3:   tagline: 'Unlock your potential. We will handle the rest',
+  4    whatsappE164: '+918905483183',

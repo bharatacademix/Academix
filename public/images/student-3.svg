@@ -1,0 +1,13 @@
+<svg width="720" height="480" viewBox="0 0 720 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="480" rx="24" fill="#FFF7EF"/>
+  <circle cx="360" cy="232" r="122" fill="#F4A261" fill-opacity="0.20"/>
+  <circle cx="360" cy="168" r="62" fill="#F6CEAD"/>
+  <path d="M258 336C258 280.772 302.772 236 358 236H362C417.228 236 462 280.772 462 336V398H258V336Z" fill="#0A192F"/>
+  <rect x="306" y="292" width="108" height="18" rx="9" fill="#00B4D8"/>
+  <rect x="118" y="198" width="126" height="86" rx="12" fill="#FFFFFF" stroke="#D4B08D"/>
+  <circle cx="150" cy="224" r="8" fill="#F4A261"/>
+  <rect x="166" y="220" width="58" height="8" rx="4" fill="#B58B63"/>
+  <rect x="140" y="240" width="84" height="8" rx="4" fill="#B58B63"/>
+  <rect x="140" y="256" width="62" height="8" rx="4" fill="#B58B63"/>
+  <text x="36" y="444" fill="#0A192F" font-family="Arial, sans-serif" font-size="32" font-weight="700">Confident Thesis Student</text>
+</svg>

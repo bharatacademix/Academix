@@ -1,0 +1,17 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A192F"/>
+      <stop offset="1" stop-color="#00B4D8"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#g1)"/>
+  <circle cx="124" cy="118" r="72" fill="#FFFFFF22"/>
+  <circle cx="516" cy="302" r="94" fill="#FFFFFF18"/>
+  <rect x="168" y="122" width="304" height="180" rx="18" fill="#FFFFFF20" stroke="#FFFFFF60"/>
+  <rect x="194" y="148" width="252" height="14" rx="7" fill="#FFFFFFA0"/>
+  <rect x="194" y="177" width="203" height="10" rx="5" fill="#FFFFFF70"/>
+  <rect x="194" y="198" width="173" height="10" rx="5" fill="#FFFFFF70"/>
+  <rect x="194" y="219" width="224" height="10" rx="5" fill="#FFFFFF70"/>
+  <text x="48" y="384" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="700">Projects & Software Support</text>
+</svg>

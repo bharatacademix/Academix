@@ -1,0 +1,50 @@
+# Query: Timezone:
+# ContextLines: 1
+
+11 results - 2 files
+
+global-academic-assist/src/components/layout/NavBar.tsx:
+   36          hour12: true,
+   37:          country.timeZone,
+   38        }).format(now)
+
+   81            <div className="hidden rounded-full border border-[var(--border)] bg-[var(--muted)] px-3 py-1 text-sm lg:block">
+   82:             <span className="font-medium">Timezone:</span>{' '}
+   83              <span className="opacity-70">
+
+  183            <div className="rounded-2xl border border-[var(--border)] bg-[var(--muted)] p-3 text-sm">
+  184:             <span className="font-medium">Timezone:</span>{' '}
+  185              <span className="font-semibold">
+
+global-academic-assist/src/lib/constants.ts:
+  15      tz: 'IST',
+  16:     timeZone: 'Asia/Kolkata',
+  17    },
+
+  23      tz: 'ET',
+  24:     timeZone: 'America/New_York',
+  25    },
+
+  31      tz: 'GMT/BST',
+  32:     timeZone: 'Europe/London',
+  33    },
+
+  39      tz: 'ET',
+  40:     timeZone: 'America/Toronto',
+  41    },
+
+  47      tz: 'AEST/AEDT',
+  48:     timeZone: 'Australia/Sydney',
+  49    },
+
+  55      tz: 'SGT',
+  56:     timeZone: 'Asia/Singapore',
+  57    },
+
+  63      tz: 'GST',
+  64:     timeZone: 'Asia/Dubai',
+  65    },
+
+  71      tz: 'UTC',
+  72:     timeZone: 'UTC',
+  73    },
