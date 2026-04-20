@@ -84,7 +84,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const resetPassword = async (email: string): Promise<{ error: string | null }> => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
+      redirectTo: "https://academix-virid.vercel.app/reset-password",
     })
     if (error) return { error: error.message }
     return { error: null }
