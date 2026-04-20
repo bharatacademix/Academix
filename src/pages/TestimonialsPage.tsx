@@ -20,7 +20,7 @@ type FeedbackFormState = {
 
 const initialTestimonials: Testimonial[] = [
   { id: 'seed-1', who: 'Rahul K., VIT Vellore', stars: 5, text: '"I was stuck on my final year project. They helped me structure the work, review my code, and finish documentation in 2 weeks. Got an A grade."' },
-  { id: 'seed-2', who: 'Priya S., Australia', stars: 5, text: '"My master's thesis was stuck. Their editor helped me restructure chapters, improve citations, and tighten the discussion. Submitted and passed with distinction."' },
+  { id: 'seed-2', who: 'Priya S., Australia', stars: 5, text: "\"My master's thesis was stuck. Their editor helped me restructure chapters, improve citations, and tighten the discussion. Submitted and passed with distinction.\"" },
   { id: 'seed-3', who: 'Dr. Anil M., IIT Delhi', stars: 5, text: '"They helped polish my review paper and improve methodology clarity. Genuine support, good turnaround, and professional communication."' },
   { id: 'seed-4', who: 'Ananya R., SRM University', stars: 5, text: '"The project mentoring was excellent. They guided me through experiments, analysis, and final submission with prompt follow-up."' },
   { id: 'seed-5', who: 'Vivek P., NIT Warangal', stars: 5, text: '"I received clear guidance on my robotics project, and the code review helped me avoid mistakes before the demo."' },
