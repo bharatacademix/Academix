@@ -10,7 +10,7 @@ import { QualityPage } from '../pages/QualityPage'
 import { ServicesPage } from '../pages/ServicesPage'
 import { SignInPage } from '../pages/SignInPage'
 import { SignUpPage } from '../pages/SignUpPage'
-import { GoogleCallbackPage } from '../pages/GoogleCallbackPage'
+
 import { TestimonialsPage } from '../pages/TestimonialsPage'
 import { ContactPage } from '../pages/ContactPage'
 
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       { path: '/privacy-policy', element: <PrivacyPolicyPage /> },
       { path: '/signin', element: <SignInPage /> },
       { path: '/signup', element: <SignUpPage /> },
-      { path: '/auth/google/callback', element: <GoogleCallbackPage /> },
+
     ],
   },
 ])

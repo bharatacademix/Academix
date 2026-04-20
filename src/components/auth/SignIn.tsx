@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { useAuth } from '../../state/auth'
 import { Button } from '../shared/Button'
-import { SocialAuthButtons } from './SocialAuthButtons'
+
 
 export function SignIn() {
   const [email, setEmail] = useState('')
@@ -39,7 +39,7 @@ export function SignIn() {
         </p>
       </div>
 
-      <SocialAuthButtons />
+
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

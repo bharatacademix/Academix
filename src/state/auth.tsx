@@ -16,7 +16,7 @@ type AuthState = {
   signIn: (email: string, password: string) => Promise<boolean>
   signUp: (name: string, email: string, password: string) => Promise<boolean>
   signOut: () => void
-  signInWithGoogle: () => Promise<void>
+
 }
 
 const AuthContext = createContext<AuthState | null>(null)
@@ -99,48 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  const signInWithGoogle = async () => {
-    setIsLoading(true)
-    try {
-      const targetUrl = `${API_URL}/api/auth/google-url`
-      console.log('[Auth] Calling backend at:', targetUrl)
 
-      const response = await fetch(targetUrl)
-
-      // Check if the server returned a valid response (not HTML error page)
-      if (!response.ok) {
-        const text = await response.text()
-        throw new Error(
-          `Backend returned ${response.status} from ${API_URL}\n` +
-          `Response: ${text.substring(0, 200)}`
-        )
-      }
-
-      const contentType = response.headers.get('content-type') || ''
-      if (!contentType.includes('application/json')) {
-        const text = await response.text()
-        throw new Error(
-          `Backend is not reachable at: ${API_URL}\n` +
-          `Got non-JSON response: ${text.substring(0, 150)}\n\n` +
-          `Check that VITE_API_URL is set correctly on Vercel.`
-        )
-      }
-
-      const data = await response.json()
-
-      if (data.url) {
-        // Redirect to Google OAuth
-        window.location.href = data.url
-      } else {
-        throw new Error(data.error || 'Failed to get Google OAuth URL')
-      }
-    } catch (error) {
-      console.error('[Auth] Google sign-in error:', error)
-      alert(`Google sign-in failed:\n${error instanceof Error ? error.message : 'Unknown error'}`)
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   const signOut = () => {
     setUser(null)
@@ -162,7 +121,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signIn,
         signUp,
         signOut,
-        signInWithGoogle,
       }}
     >
       {children}

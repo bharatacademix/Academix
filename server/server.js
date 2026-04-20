@@ -21,16 +21,7 @@ app.use(
 app.use(express.json())
 app.use(cookieParser())
 
-// Environment variables
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
-const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || `${FRONTEND_URL}/auth/google/callback`
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
-
-// Validate environment variables on startup
-if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
-  console.warn('⚠️  Warning: Google OAuth credentials not configured. Google authentication will not work.')
-}
 
 // Helper function to create JWT token
 const createToken = (user) => {
@@ -61,107 +52,6 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' })
 })
 
-// Get Google OAuth URL
-app.get('/api/auth/google-url', (req, res) => {
-  if (!GOOGLE_CLIENT_ID) {
-    return res.status(500).json({ error: 'Google OAuth not configured' })
-  }
-
-  const params = new URLSearchParams({
-    client_id: GOOGLE_CLIENT_ID,
-    redirect_uri: GOOGLE_REDIRECT_URI,
-    response_type: 'code',
-    scope: 'openid email profile',
-    access_type: 'offline',
-    prompt: 'consent',
-  })
-
-  const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`
-  res.json({ url })
-})
-
-// Handle Google OAuth callback
-app.post('/api/auth/google/callback', async (req, res) => {
-  try {
-    const { code } = req.body
-
-    if (!code) {
-      return res.status(400).json({ error: 'Authorization code missing' })
-    }
-
-    if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
-      return res.status(500).json({ error: 'Google OAuth not configured' })
-    }
-
-    // Exchange code for tokens
-    const tokenResponse = await axios.post(
-      'https://oauth2.googleapis.com/token',
-      new URLSearchParams({
-        client_id: GOOGLE_CLIENT_ID,
-        client_secret: GOOGLE_CLIENT_SECRET,
-        code,
-        grant_type: 'authorization_code',
-        redirect_uri: GOOGLE_REDIRECT_URI,
-      }).toString(),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      },
-    )
-
-    const { access_token } = tokenResponse.data
-
-    // Get user info from Google
-    const userResponse = await axios.get('https://www.googleapis.com/oauth2/v2/userinfo', {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    })
-
-    const { id, email, name, picture } = userResponse.data
-
-    // Create user object
-    const user = {
-      id: `google_${id}`,
-      email,
-      name,
-      avatar: picture,
-      provider: 'google',
-      createdAt: new Date().toISOString(),
-    }
-
-    // Create JWT token
-    const token = createToken(user)
-
-    // Set secure HTTP-only cookie
-    res.cookie('auth_token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    })
-
-    // Return user and token
-    res.json({
-      success: true,
-      user,
-      token,
-    })
-  } catch (error) {
-    const body = error.response?.data
-    const details = body
-      ? typeof body === 'string'
-        ? body
-        : body.error_description || body.error || JSON.stringify(body)
-      : error.message
-    console.error('Google OAuth error:', details)
-    res.status(400).json({
-      error: 'Authentication failed',
-      details,
-    })
-  }
-})
 
 // Get Facebook OAuth URL (for future implementation)
 app.get('/api/auth/facebook-url', (req, res) => {
