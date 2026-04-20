@@ -1,128 +1,88 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import type { Session } from '@supabase/supabase-js'
+import { supabase } from '../lib/supabase'
 
 export type User = {
   id: string
   email: string
   name: string
   avatar?: string
-  provider?: string
   createdAt: string
 }
 
 type AuthState = {
   user: User | null
   isLoading: boolean
-  token: string | null
-  signIn: (email: string, password: string) => Promise<boolean>
-  signUp: (name: string, email: string, password: string) => Promise<boolean>
-  signOut: () => void
-
+  session: Session | null
+  signIn: (email: string, password: string) => Promise<{ error: string | null }>
+  signUp: (name: string, email: string, password: string) => Promise<{ error: string | null }>
+  signOut: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthState | null>(null)
 
-const STORAGE_KEY = 'gaa:auth:v1'
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+function toUser(session: Session): User {
+  const meta = session.user.user_metadata
+  return {
+    id: session.user.id,
+    email: session.user.email ?? '',
+    name: meta?.name ?? meta?.full_name ?? session.user.email?.split('@')[0] ?? '',
+    avatar: meta?.avatar_url,
+    createdAt: session.user.created_at,
+  }
+}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
-  const [token, setToken] = useState<string | null>(null)
+  const [session, setSession] = useState<Session | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Load user from localStorage on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const { user: storedUser, token: storedToken } = JSON.parse(stored)
-        setUser(storedUser)
-        setToken(storedToken)
-      }
-    } catch (error) {
-      console.error('Failed to load user from storage:', error)
-    } finally {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+      setUser(session ? toUser(session) : null)
       setIsLoading(false)
-    }
+    })
+
+    // Listen for auth changes (login, logout, token refresh)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+      setUser(session ? toUser(session) : null)
+      setIsLoading(false)
+    })
+
+    return () => subscription.unsubscribe()
   }, [])
 
-  const saveAuth = (user: User, token: string) => {
-    setUser(user)
-    setToken(token)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ user, token }))
-  }
-
-  const signIn = async (email: string, _password: string): Promise<boolean> => {
+  const signIn = async (email: string, password: string): Promise<{ error: string | null }> => {
     setIsLoading(true)
-    try {
-      // Simulate API call - in a real app, this would call your backend
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      const mockUser: User = {
-        id: Math.random().toString(36).substr(2, 9),
-        email,
-        name: email.split('@')[0],
-        createdAt: new Date().toISOString(),
-      }
-
-      const mockToken = `mock-token-${Date.now()}`
-      saveAuth(mockUser, mockToken)
-      return true
-    } catch (error) {
-      console.error('Sign in failed:', error)
-      return false
-    } finally {
-      setIsLoading(false)
-    }
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    setIsLoading(false)
+    if (error) return { error: error.message }
+    return { error: null }
   }
 
-  const signUp = async (name: string, email: string, _password: string): Promise<boolean> => {
+  const signUp = async (name: string, email: string, password: string): Promise<{ error: string | null }> => {
     setIsLoading(true)
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      const mockUser: User = {
-        id: Math.random().toString(36).substr(2, 9),
-        email,
-        name,
-        createdAt: new Date().toISOString(),
-      }
-
-      const mockToken = `mock-token-${Date.now()}`
-      saveAuth(mockUser, mockToken)
-      return true
-    } catch (error) {
-      console.error('Sign up failed:', error)
-      return false
-    } finally {
-      setIsLoading(false)
-    }
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { name },
+      },
+    })
+    setIsLoading(false)
+    if (error) return { error: error.message }
+    return { error: null }
   }
 
-
-
-  const signOut = () => {
-    setUser(null)
-    setToken(null)
-    localStorage.removeItem(STORAGE_KEY)
-    // Call logout endpoint
-    fetch(`${API_URL}/api/auth/logout`, {
-      method: 'POST',
-      credentials: 'include',
-    }).catch(console.error)
+  const signOut = async () => {
+    await supabase.auth.signOut()
   }
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        isLoading,
-        token,
-        signIn,
-        signUp,
-        signOut,
-      }}
-    >
+    <AuthContext.Provider value={{ user, isLoading, session, signIn, signUp, signOut }}>
       {children}
     </AuthContext.Provider>
   )

@@ -22,11 +22,11 @@ export function SignIn() {
       return
     }
 
-    const success = await signIn(email, password)
-    if (success) {
-      navigate('/')
+    const { error } = await signIn(email, password)
+    if (error) {
+      setError(error)
     } else {
-      setError('Invalid email or password')
+      navigate('/')
     }
   }
 

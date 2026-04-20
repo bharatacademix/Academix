@@ -35,11 +35,11 @@ export function SignUp() {
       return
     }
 
-    const success = await signUp(name, email, password)
-    if (success) {
-      navigate('/')
+    const { error } = await signUp(name, email, password)
+    if (error) {
+      setError(error)
     } else {
-      setError('Failed to create account. Please try again.')
+      navigate('/')
     }
   }
 
