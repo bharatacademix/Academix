@@ -1,13 +1,2 @@
-# Cloudflare Pages Configuration (Root/Frontend)
 name = "global-academic-assist"
 pages_build_output_dir = "dist"
-
-# Routes configuration
-routes = [
-  { pattern = "https://api.your-domain.com/api/*", zone_name = "your-domain.com" }
-]
-
-# Database bindings (if using D1 or KV)
-[[kv_namespaces]]
-binding = "AUTH_CACHE"
-id = "your-kv-namespace-id"
