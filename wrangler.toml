@@ -2,18 +2,6 @@
 name = "global-academic-assist"
 pages_build_output_dir = "dist"
 
-# Build configuration for Pages
-[build]
-command = "npm run build"
-cwd = "./"
-
-# Environment variables for Pages
-[env.production]
-vars = { VITE_API_URL = "https://api.your-domain.com", VITE_APP_NAME = "Global Academic Assist" }
-
-[env.staging]
-vars = { VITE_API_URL = "https://api-staging.your-domain.com", VITE_APP_NAME = "Global Academic Assist (Staging)" }
-
 # Routes configuration
 routes = [
   { pattern = "https://api.your-domain.com/api/*", zone_name = "your-domain.com" }
