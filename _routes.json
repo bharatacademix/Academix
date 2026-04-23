@@ -1,0 +1,24 @@
+[
+  {
+    "version": 1,
+    "include": ["/*"],
+    "exclude": [
+      "/assets/*",
+      "/images/*",
+      "/videos/*",
+      "/*.svg",
+      "/*.png",
+      "/*.jpg",
+      "/*.jpeg",
+      "/*.gif",
+      "/*.webp",
+      "/*.ico"
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ]
+  }
+]
