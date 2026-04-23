@@ -1,23 +1,18 @@
-name = "global-academic-assist-api"
-main = "server/worker.ts"
-compatibility_date = "2024-12-16"
-type = "service"
+# Cloudflare Pages Configuration (Root/Frontend)
+name = "global-academic-assist"
+pages_build_output_dir = "dist"
 
-# Environment variables for production
-[env.production]
-vars = { ENVIRONMENT = "production" }
-name = "global-academic-assist-api-prod"
-
-# Environment variables for staging
-[env.staging]
-vars = { ENVIRONMENT = "staging" }
-name = "global-academic-assist-api-staging"
-
-# Configure build
+# Build configuration for Pages
 [build]
-command = "npm install && npm run build:worker"
+command = "npm run build"
 cwd = "./"
-watch_paths = ["server/**/*.ts"]
+
+# Environment variables for Pages
+[env.production]
+vars = { VITE_API_URL = "https://api.your-domain.com", VITE_APP_NAME = "Global Academic Assist" }
+
+[env.staging]
+vars = { VITE_API_URL = "https://api-staging.your-domain.com", VITE_APP_NAME = "Global Academic Assist (Staging)" }
 
 # Routes configuration
 routes = [

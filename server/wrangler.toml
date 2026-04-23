@@ -1,0 +1,31 @@
+name = "global-academic-assist-api"
+main = "worker.ts"
+compatibility_date = "2024-12-16"
+type = "service"
+
+# Routes configuration - Update with your actual domain
+routes = [
+  { pattern = "https://api.your-domain.com/api/*", zone_name = "your-domain.com" }
+]
+
+# Environment variables for production
+[env.production]
+vars = { ENVIRONMENT = "production" }
+name = "global-academic-assist-api-prod"
+routes = [
+  { pattern = "https://api.your-domain.com/api/*", zone_name = "your-domain.com" }
+]
+
+# Environment variables for staging
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+name = "global-academic-assist-api-staging"
+routes = [
+  { pattern = "https://api-staging.your-domain.com/api/*", zone_name = "your-domain.com" }
+]
+
+# Configure build
+[build]
+command = "npm run build:worker"
+cwd = "./"
+watch_paths = ["*.ts"]
