@@ -3,6 +3,7 @@ import { Card } from '../components/shared/Card'
 import { PageHeader } from '../components/shared/PageHeader'
 import { Tabs } from '../components/shared/Tabs'
 import { SupportAreasSection } from '../components/sections/SupportAreasSection'
+import { AdSense } from '../components/shared/AdSense'
 
 type TabId = 'students' | 'research' | 'professional'
 
@@ -294,6 +295,16 @@ export function ServicesPage() {
         </div>
       </Card>
 
+      {/* Advertisement Section */}
+      {import.meta.env.VITE_ADSENSE_AD_UNIT_SIDEBAR && (
+        <AdSense 
+          adSlot={import.meta.env.VITE_ADSENSE_AD_UNIT_SIDEBAR}
+          adFormat="auto"
+          className="my-8"
+          style={{ minHeight: '300px' }}
+        />
+      )}
+
       <div className="mt-10">
         <SupportAreasSection
           title="Excellence Across Every Academic Service"
@@ -303,4 +314,5 @@ export function ServicesPage() {
     </div>
   )
 }
+
 

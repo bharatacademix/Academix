@@ -7,6 +7,7 @@ import { Chatbot } from '../components/shared/Chatbot'
 import { usePreferences } from '../state/preferences'
 import { cn } from '../lib/cn'
 import { HomeServicesOneByOne } from '../components/sections/HomeServicesOneByOne'
+import { AdSense } from '../components/shared/AdSense'
 
 function useTypingText(text: string, speedMs = 55) {
   const [value, setValue] = useState('')
@@ -199,6 +200,16 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Advertisement Section */}
+      {import.meta.env.VITE_ADSENSE_AD_UNIT_TOP && (
+        <AdSense 
+          adSlot={import.meta.env.VITE_ADSENSE_AD_UNIT_TOP}
+          adFormat="auto"
+          className="my-8"
+          style={{ minHeight: '300px' }}
+        />
+      )}
+
       <section className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-gradient-to-r from-[var(--emerald)]/10 via-white/20 to-[var(--emerald)]/10 p-8 text-center">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse" />
         <div className="relative">
@@ -211,6 +222,16 @@ export function HomePage() {
       <Chatbot />
 
       <HomeServicesOneByOne />
+
+      {/* Advertisement Section */}
+      {import.meta.env.VITE_ADSENSE_AD_UNIT_ARTICLE && (
+        <AdSense 
+          adSlot={import.meta.env.VITE_ADSENSE_AD_UNIT_ARTICLE}
+          adFormat="horizontal"
+          className="my-8"
+          style={{ minHeight: '250px' }}
+        />
+      )}
 
       <section className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-gradient-to-r from-[var(--emerald)]/10 via-white/20 to-[var(--emerald)]/10 p-8 text-center">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse" />
@@ -338,6 +359,16 @@ export function HomePage() {
           </div>
         </Card>
       </section>
+
+      {/* Advertisement Section */}
+      {import.meta.env.VITE_ADSENSE_AD_UNIT_BOTTOM && (
+        <AdSense 
+          adSlot={import.meta.env.VITE_ADSENSE_AD_UNIT_BOTTOM}
+          adFormat="auto"
+          className="my-8"
+          style={{ minHeight: '250px' }}
+        />
+      )}
 
       <section className="mt-10 rounded-3xl border border-[var(--border)] bg-[color:var(--navy)] p-8 text-white">
         <div className="grid gap-6 lg:grid-cols-[1.7fr_1fr] lg:items-center">
